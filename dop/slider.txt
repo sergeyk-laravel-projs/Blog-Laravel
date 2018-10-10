@@ -1,0 +1,23 @@
+=========Sliders=========
+
+xx.jpg
+
+<h2 style="color:#fff">CORPORATE, MULTIPURPOSE.. <br /><span>PINK RIO</span></h2>
+
+Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat. Mauris ac mi velit, a tempor neque
+
+---------------------------------------------------------
+
+00314.jpg
+
+<h2 style="color:#fff">PINKRIO. <span>STRONG AND POWERFUL.</span></h2>
+
+Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat. Mauris ac mi velit, a tempor neque
+
+---------------------------------------------------------
+
+dd.jpg
+
+<h2 style="color:#fff">PINKRIO. <span>STRONG AND POWERFUL.</span></h2>
+
+Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat. Mauris ac mi velit, a tempor neque
