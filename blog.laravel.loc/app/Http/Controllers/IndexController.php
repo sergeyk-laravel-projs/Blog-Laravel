@@ -11,7 +11,7 @@ class IndexController extends SiteController
     
     public function __construct() {
     	
-    	parent::__construct();
+    	parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
     	
     	
     	$this->bar = 'right';
