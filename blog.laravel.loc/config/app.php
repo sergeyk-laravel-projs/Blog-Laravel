@@ -157,6 +157,8 @@ return [
         Corp\Providers\AuthServiceProvider::class,
         Corp\Providers\EventServiceProvider::class,
         Corp\Providers\RouteServiceProvider::class,
+        
+        'Lavary\Menu\ServiceProvider',
 
     ],
 
@@ -203,6 +205,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        
+        'Menu'       => 'Lavary\Menu\Facade',
 
     ],
 
