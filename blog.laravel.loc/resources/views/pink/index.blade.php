@@ -13,3 +13,8 @@
 	{!! $content !!}
 @endsection
 
+
+@section('bar')
+	{!! $rightBar !!}
+@endsection
+
