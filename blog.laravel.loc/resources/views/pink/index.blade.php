@@ -18,3 +18,7 @@
 	{!! $rightBar !!}
 @endsection
 
+@section('footer')
+	{!! $footer !!}
+@endsection
+
