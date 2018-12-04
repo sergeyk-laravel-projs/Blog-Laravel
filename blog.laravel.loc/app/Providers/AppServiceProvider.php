@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 use Blade;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
         	return "<?php $name = $val ?>";
         	
         });
+        
+  
         
     }
 
