@@ -28,7 +28,8 @@ jQuery(document).ready(function($) {
 							datatype:'JSON',
 							success: function(html) {
 								if(html.error) {
-									
+									$('.wrap_result').css('color','red').append('<br /><strond>Ошибка: </strong>' + html.error.join('<br />'));
+									$('.wrap_result').delay(2000).fadeOut(500);
 								}
 								else if(html.success) {
 									$('.wrap_result')
@@ -39,6 +40,17 @@ jQuery(document).ready(function($) {
 														if(html.data.parent_id > 0) {
 															comParent.parents('div#respond').prev().after('<ul class="children">' + html.comment + '</ul>');
 														}
+														else {
+															if($.contains('#comments','ol.commentlist')) {
+																$('ol.commentlist').append(html.comment);
+															}
+															else {
+																
+																$('#respond').before('<ol class="commentlist group">' + html.comment + '</ol>');
+																
+															}
+														}
+														
 														
 														
 														
@@ -50,6 +62,10 @@ jQuery(document).ready(function($) {
 								
 							},
 							error:function() {
+								$('.wrap_result').css('color','red').append('<br /><strond>Ошибка: </strong>');
+								$('.wrap_result').delay(2000).fadeOut(500, function() {
+									$('#cancel-comment-reply-link').click();
+								});
 								
 							}
 							
