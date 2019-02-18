@@ -33,6 +33,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        
         parent::report($e);
     }
 
@@ -45,6 +46,27 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+       
+       if($this->isHttpException($e)) {
+	   		$statusCode = $e->getStatusCode();
+	   		
+	   		switch($statusCode) {
+				case '404' :
+				
+				$obj = new \Corp\Http\Controllers\SiteController(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
+				
+				$navigation = view(env('THEME').'.navigation')->with('menu',$obj->getMenu())->render();
+				
+				\Log::alert('Страница не найдена - '. $request->url());
+				
+				return response()->view(env('THEME').'.404',['bar' => 'no','title' =>'Страница не найдена','navigation'=>$navigation]);
+			}
+	   } 
+       
+       return parent::render($request, $e);
+        
+       
+        
+        
     }
 }
