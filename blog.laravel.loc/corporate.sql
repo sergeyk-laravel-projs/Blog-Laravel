@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 30 2016 г., 17:28
+-- Время создания: Июл 31 2016 г., 23:18
 -- Версия сервера: 5.5.45
 -- Версия PHP: 5.6.12
 
@@ -206,7 +206,13 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_07_17_061305_ChangePortfoliosTable', 3),
 ('2016_07_27_185307_Change_Artickles_Table2', 4),
 ('2016_07_28_155842_ChangePortfoliosTable2', 5),
-('2016_07_30_140344_ChangeUsersTable', 6);
+('2016_07_30_140344_ChangeUsersTable', 6),
+('2016_07_31_172026_CretaeRolesTable', 7),
+('2016_07_31_172059_CretaePermissionsTable', 7),
+('2016_07_31_172158_CretaePermissionRoleTable', 7),
+('2016_07_31_172243_CretaeRoleUserTable', 7),
+('2016_07_31_195817_ChangeRoleUserTable', 8),
+('2016_07_31_195847_ChangePermissionRoleTable', 8);
 
 -- --------------------------------------------------------
 
@@ -221,6 +227,63 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`),
   KEY `password_resets_token_index` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `permissions`
+--
+
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Дамп данных таблицы `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'VIEW_ADMIN', NULL, NULL),
+(2, 'ADD_ARTICLES', NULL, NULL),
+(3, 'UPDATE_ARTICLES', NULL, NULL),
+(4, 'DELETE_ARTICLES', NULL, NULL),
+(5, 'ADMIN_USERS', NULL, NULL),
+(6, 'VIEW_ADMIN_ARTICLES', NULL, NULL),
+(7, 'EDIT_USERS', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `permission_role`
+--
+
+CREATE TABLE IF NOT EXISTS `permission_role` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `role_id` int(10) unsigned NOT NULL DEFAULT '1',
+  `permission_id` int(10) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `permission_role_role_id_foreign` (`role_id`),
+  KEY `permission_role_permission_id_foreign` (`permission_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Дамп данных таблицы `permission_role`
+--
+
+INSERT INTO `permission_role` (`id`, `created_at`, `updated_at`, `role_id`, `permission_id`) VALUES
+(1, NULL, NULL, 1, 1),
+(2, NULL, NULL, 1, 2),
+(3, NULL, NULL, 1, 3),
+(4, NULL, NULL, 1, 4),
+(5, NULL, NULL, 1, 5),
+(6, NULL, NULL, 1, 6),
+(7, NULL, NULL, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -259,6 +322,53 @@ INSERT INTO `portfolios` (`id`, `title`, `text`, `customer`, `alias`, `img`, `cr
 (7, 'VItale Premium', 'Nullam volutpat, mauris scelerisque iaculis semper, justo odio rutrum urna, at cursus urna nisl et ipsum. Donec dapibus lacus nec sapien faucibus eget suscipit lorem mattis.\\r\\n\\r\\nDonec non mauris ac nulla consectetur pretium sit amet rhoncus neque. Maecenas aliquet, diam sed rhoncus vestibulum, sem lacus ultrices est, eu hendrerit tortor nulla in dui. Suspendisse enim purus, euismod interdum viverra eget, ultricies eu est. Maecenas dignissim mauris id est semper suscipit. Suspendisse venenatis vestibulum quam, quis porttitor arcu vestibulum et.\\r\\n\\r\\nSed porttitor eros ut purus elementum a consectetur purus vulputate\r\n', 'Steep This!', 'project7', '{"mini":"0081-175x175.jpg","max":"0081-770x368.jpg","path":"0081.jpg"}\r\n', '2016-07-16 21:00:00', NULL, 'brand-identity', '', ''),
 (8, 'Digitpool Medien', 'Nullam volutpat, mauris scelerisque iaculis semper, justo odio rutrum urna, at cursus urna nisl et ipsum. Donec dapibus lacus nec sapien faucibus eget suscipit lorem mattis.\\r\\n\\r\\nDonec non mauris ac nulla consectetur pretium sit amet rhoncus neque. Maecenas aliquet, diam sed rhoncus vestibulum, sem lacus ultrices est, eu hendrerit tortor nulla in dui. Suspendisse enim purus, euismod interdum viverra eget, ultricies eu est. Maecenas dignissim mauris id est semper suscipit. Suspendisse venenatis vestibulum quam, quis porttitor arcu vestibulum et.\\r\\n\\r\\nSed porttitor eros ut purus elementum a consectetur purus vulputate\r\n', 'customer', 'project8', '{"mini":"0071-175x175.jpg","max":"0071.jpg","path":"0071-770x368.jpg"}\r\n', '2016-07-16 21:00:00', NULL, 'brand-identity', '', ''),
 (9, 'Octopus', 'Nullam volutpat, mauris scelerisque iaculis semper, justo odio rutrum urna, at cursus urna nisl et ipsum. Donec dapibus lacus nec sapien faucibus eget suscipit lorem mattis.\\r\\n\\r\\nDonec non mauris ac nulla consectetur pretium sit amet rhoncus neque. Maecenas aliquet, diam sed rhoncus vestibulum, sem lacus ultrices est, eu hendrerit tortor nulla in dui. Suspendisse enim purus, euismod interdum viverra eget, ultricies eu est. Maecenas dignissim mauris id est semper suscipit. Suspendisse venenatis vestibulum quam, quis porttitor arcu vestibulum et.\\r\\n\\r\\nSed porttitor eros ut purus elementum a consectetur purus vulputate\r\n', '', 'project9', '{"mini":"0081-175x175.jpg","max":"0081.jpg","path":"0081-770x368.jpg"}\r\n', '2016-07-16 21:00:00', NULL, 'brand-identity', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `roles`
+--
+
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', NULL, NULL),
+(2, 'Moderator', NULL, NULL),
+(3, 'Guest', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `role_user`
+--
+
+CREATE TABLE IF NOT EXISTS `role_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '1',
+  `role_id` int(10) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `role_user_user_id_foreign` (`user_id`),
+  KEY `role_user_role_id_foreign` (`role_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `role_user`
+--
+
+INSERT INTO `role_user` (`id`, `created_at`, `updated_at`, `user_id`, `role_id`) VALUES
+(1, NULL, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -309,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `login`) VALUES
-(1, 'User', 'user@mail.ru', '$2y$10$WGH9LJAqL4Ma.9nrrb/mreS08IiCQXD8dzfCvv4qx.7T9bmOxmrtS', 'FUQdKjpeATHYA3r6BSPulZTj9po7JlrTwIzzlTCUkZXjAUwvnV0IKj5pHTOQ', '2016-07-17 03:21:51', '2016-07-30 11:17:53', 'user');
+(1, 'User', 'user@mail.ru', '$2y$10$WGH9LJAqL4Ma.9nrrb/mreS08IiCQXD8dzfCvv4qx.7T9bmOxmrtS', 'C13R04J2bwFxhWG0SJikUlRb9N8RNTcTvvifR5PQOPyXzW0p8Frxbqohjj2A', '2016-07-17 03:21:51', '2016-07-31 14:01:44', 'user');
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -330,10 +440,24 @@ ALTER TABLE `comments`
   ADD CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
+-- Ограничения внешнего ключа таблицы `permission_role`
+--
+ALTER TABLE `permission_role`
+  ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`),
+  ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+--
 -- Ограничения внешнего ключа таблицы `portfolios`
 --
 ALTER TABLE `portfolios`
   ADD CONSTRAINT `portfolios_filter_alias_foreign` FOREIGN KEY (`filter_alias`) REFERENCES `filters` (`alias`);
+
+--
+-- Ограничения внешнего ключа таблицы `role_user`
+--
+ALTER TABLE `role_user`
+  ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
