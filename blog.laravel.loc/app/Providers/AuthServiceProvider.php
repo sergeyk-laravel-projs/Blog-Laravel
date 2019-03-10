@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
+        
+        $gate->define('VIEW_ADMIN', function ($user) {
+        	return $user->canDo('VIEW_ADMIN', FALSE);
+        });
 
         //
     }
