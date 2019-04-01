@@ -8,6 +8,10 @@ class Article extends Model
 {
     //
     
+    protected $fillable = ['title','img','alias','text','desc','keywords','meta_desc','category_id'];
+	
+    
+    
     public function user() {
 		return $this->belongsTo('Corp\User');
 	}
