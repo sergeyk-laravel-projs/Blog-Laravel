@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin','middleware'=> 'auth'],function() {
 	//admin
 	Route::get('/',['uses' => 'Admin\IndexController@index','as' => 'adminIndex']);
 	
+	// articles
 	Route::resource('/articles','Admin\ArticlesController');
 	
 });
