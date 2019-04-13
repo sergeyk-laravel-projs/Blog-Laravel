@@ -177,7 +177,13 @@ class ArticlesController extends AdminController
     public function update(ArticleRequest $request, Article $article)
     {
         //
-        dd($request);
+        $result = $this->a_rep->updateArticle($request, $article);
+		
+		if(is_array($result) && !empty($result['error'])) {
+			return back()->with($result);
+		}
+		
+		return redirect('/admin')->with($result);
         
     }
 
