@@ -6,6 +6,8 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 use Corp\User;
 
+use Corp\Article;
+
 class ArticlePolicy
 {
     use HandlesAuthorization;
@@ -27,4 +29,10 @@ class ArticlePolicy
 	public function edit(User $user) {
 		return $user->canDo('UPDATE_ARTICLES');
 	}
-}
+	
+	public function destroy(User $user, Article $article) {
+		return ($user->canDo('DELETE_ARTICLES')  && $user->id == $article->user_id);
+	}
+	
+	
+  }
