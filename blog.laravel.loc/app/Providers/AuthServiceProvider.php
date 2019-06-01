@@ -8,9 +8,11 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Corp\Article;
 use Corp\Permission;
 use Corp\Menu;
+use Corp\User;
 use Corp\Policies\ArticlePolicy;
 use Corp\Policies\PermissionPolicy;
 use Corp\Policies\MenusPolicy;
+use Corp\Policies\UserPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         Article::class => ArticlePolicy::class,
         Permission::class => PermissionPolicy::class,
         Menu::class => MenusPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**

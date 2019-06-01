@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "lavary/laravel-menu": "dev-master",
-        "intervention/image": "2.*"
+        "intervention/image": "2.*",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

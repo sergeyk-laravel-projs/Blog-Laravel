@@ -10,6 +10,8 @@ use Corp\Repositories\MenusRepository;
 
 use Menu;
 
+use Cache;
+
 class SiteController extends Controller
 {
     //
@@ -43,11 +45,50 @@ class SiteController extends Controller
 	protected function renderOutput() {
 		
 		
-		$menu = $this->getMenu();
+		//$menu = $this->getMenu();
+		//$navigation = view(env('THEME').'.navigation')->with('menu',$menu)->render();
+		
+		
+		//   menu
+		
+		//Cache::forget('menu');
+		//Cache::flush();
+		
+		/*$navigation =  Cache::get('menu', function() {
+			
+			$menu = $this->getMenu();
+			$tmp = view(env('THEME').'.navigation')->with('menu',$menu)->render();
+			
+			Cache::forever('menu',$tmp);
+			
+			return $tmp;
+			
+		});*/
+		
+		$navigation =  Cache::remember('menu',10,function() {
+			
+			$menu = $this->getMenu();
+			return view(env('THEME').'.navigation')->with('menu',$menu)->render();
+			
+			
+		});
+		
+		/*if(Cache::has('menu')) {
+			//$navigation = Cache::get('menu','Menu is empty');
+			//$navigation = Cache::pull('menu','Menu is empty');
+		}
+		else {
+			$menu = $this->getMenu();
+			$navigation = view(env('THEME').'.navigation')->with('menu',$menu)->render();
+			
+			$time = \Carbon::now()->addMinutes(10);
+			Cache::put('menu',$navigation,$time);
+			//Cache::forever('menu',$navigation);
+		}*/
+		
 		
 		//dd($menu);
 		
-		$navigation = view(env('THEME').'.navigation')->with('menu',$menu)->render();
 		$this->vars = array_add($this->vars,'navigation',$navigation);
 		
 		if($this->contentRightBar) {

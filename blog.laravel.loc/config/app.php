@@ -215,7 +215,9 @@ return [
         
         'Menu'       => 'Lavary\Menu\Facade',
         
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        
+        'Carbon' => 'Carbon\Carbon'
 
     ],
 

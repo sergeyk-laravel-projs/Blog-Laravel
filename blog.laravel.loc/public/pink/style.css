@@ -687,7 +687,7 @@ input#s { width:73%; padding:5px; }
 .content .contact-form label span.label { font-size:13px; }
 .content .contact-form label span.sublabel { font-family: 'Calibri', 'Droid Sans', Verdana, Arial, sans-serif; font-size: 11px; color: #9C9B9B }  
 .content .contact-form li.text-field input, .content .contact-form li.checkbox-field input, .content .contact-form li.file-field input, .content .contact-form li select, .content .contact-form li textarea { margin-top:10px; padding:10px; }
-.content .contact-form li.text-field input, .content .contact-form li select { font-size: 12px; background-color:#fff; width:97.5%; }
+.content .contact-form li.text-field input, .content .contact-form li select { font-size: 12px; width:97.5%; }
 .content .contact-form li select { padding:10px; }
 .content .contact-form li textarea {  width:97%; height:150px; background-color:#fff; } 
 .content .contact-form li.icon input, .content .contact-form li.icon textarea, .content .contact-form li input.icon, .content .contact-form li textarea.icon { background-repeat:no-repeat; } 
