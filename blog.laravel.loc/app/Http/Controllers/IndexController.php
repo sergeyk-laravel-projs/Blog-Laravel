@@ -26,7 +26,7 @@ class IndexController extends SiteController
     	
     	$this->bar = 'right';
     	
-    	$this->template = env('THEME').'.index';
+    	$this->template = config('settings.theme').'.index';
 		
 	}
     
@@ -41,12 +41,12 @@ class IndexController extends SiteController
         
         $portfolios = $this->getPortfolio();
         
-        $content = view(env('THEME').'.content')->with('portfolios',$portfolios)->render();
+        $content = view(config('settings.theme').'.content')->with('portfolios',$portfolios)->render();
         $this->vars = array_add($this->vars,'content', $content);
         
         $sliderItems = $this->getSliders();
         
-        $sliders = view(env('THEME').'.slider')->with('sliders',$sliderItems)->render();
+        $sliders = view(config('settings.theme').'.slider')->with('sliders',$sliderItems)->render();
         $this->vars = array_add($this->vars,'sliders',$sliders);
         
         $this->keywords = 'Home Page';
@@ -58,7 +58,7 @@ class IndexController extends SiteController
         
        // dd($articles);
         
-        $this->contentRightBar = view(env('THEME').'.indexBar')->with('articles',$articles)->render();
+        $this->contentRightBar = view(config('settings.theme').'.indexBar')->with('articles',$articles)->render();
         
         
         return $this->renderOutput();

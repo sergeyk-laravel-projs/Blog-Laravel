@@ -20,9 +20,9 @@
 				                   	<div class="hentry work group">
 				                        <div class="work-thumbnail">
 				                            <div class="nozoom">
-				                                <img src="{{ asset(env('THEME')) }}/images/projects/{{ $portfolio->img->max }}" alt="0061" title="0061" />							
+				                                <img src="{{ asset(config('settings.theme')) }}/images/projects/{{ $portfolio->img->max }}" alt="0061" title="0061" />							
 				                                <div class="overlay">
-				                                    <a class="overlay_img" href="{{ asset(env('THEME')) }}/images/projects/{{ $portfolio->img->path }}" rel="lightbox" title="{{ $portfolio->title }}"></a>
+				                                    <a class="overlay_img" href="{{ asset(config('settings.theme')) }}/images/projects/{{ $portfolio->img->path }}" rel="lightbox" title="{{ $portfolio->title }}"></a>
 				                                    <a class="overlay_project" href="{{ route('portfolios.show',['alias' => $portfolio->alias]) }}"></a>
 				                                    <span class="overlay_title">{{ $portfolio->title }}</span>
 				                                </div>

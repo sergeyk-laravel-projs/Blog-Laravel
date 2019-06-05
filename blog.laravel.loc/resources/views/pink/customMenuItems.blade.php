@@ -5,7 +5,7 @@
 		@if($item->hasChildren())
 			
 			<ul class="sub-menu">
-				@include(env('THEME').'.customMenuItems',['items'=>$item->children()])
+				@include(config('settings.theme').'.customMenuItems',['items'=>$item->children()])
 			</ul>
 			
 		@endif

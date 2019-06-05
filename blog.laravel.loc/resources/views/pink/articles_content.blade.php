@@ -10,7 +10,7 @@
 					                    <h2 class="post-title"><a href="{{ route('articles.show',['alias'=>$article->alias]) }}">{{ $article->title }}</a></h2>
 					                    <!-- post featured -->
 					                    <div class="image-wrap">
-					                        <img src="{{ asset(env('THEME')) }}/images/articles/{{ $article->img->max }}" alt="001" title="001" />        
+					                        <img src="{{ asset(config('settings.theme')) }}/images/articles/{{ $article->img->max }}" alt="001" title="001" />        
 					                    </div>
 					                    <p class="date">
 					                        <span class="month">{{ $article->created_at->format('M') }}</span>

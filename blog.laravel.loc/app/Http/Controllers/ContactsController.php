@@ -18,7 +18,7 @@ class ContactsController extends SiteController
     	
     	$this->bar = 'left';
     	
-    	$this->template = env('THEME').'.contacts';
+    	$this->template = config('settings.theme').'.contacts';
 		
 	}
 	
@@ -40,7 +40,7 @@ class ContactsController extends SiteController
 			
 			$data = $request->all();
 			
-			$result = Mail::send(env('THEME').'.email', ['data' => $data], function ($m) use ($data) {
+			$result = Mail::send(config('settings.theme').'.email', ['data' => $data], function ($m) use ($data) {
 				$mail_admin = env('MAIL_ADMIN');
 				
 	            $m->from($data['email'], $data['name']);
@@ -57,10 +57,10 @@ class ContactsController extends SiteController
 	 	
 	 	$this->title = 'Контакты';
 	 	
-	 	$content = view(env('THEME').'.contact_content')->render();
+	 	$content = view(config('settings.theme').'.contact_content')->render();
 	 	$this->vars = array_add($this->vars,'content',$content);
 	 	
-	 	$this->contentLeftBar = view(env('THEME').'.contact_bar')->render();
+	 	$this->contentLeftBar = view(config('settings.theme').'.contact_bar')->render();
 	 	
 	 	return $this->renderOutput();
     }

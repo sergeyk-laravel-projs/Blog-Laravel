@@ -10,7 +10,7 @@
 				    @foreach($sliders as $slider)
 				    
 				    <li>
-					   <div class="slide-holder" style="background:  url('{{ asset(env('THEME')) }}/images/{{ $slider->img }}') no-repeat center center" style="height:483px;">
+					   <div class="slide-holder" style="background:  url('{{ asset(config('settings.theme')) }}/images/{{ $slider->img }}') no-repeat center center" style="height:483px;">
 					    	<div class="slide-content-holder inner" style="height:483px;">
 					    		@if($i%2 !== 0)
 					    			<div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
@@ -109,6 +109,6 @@
 				    });
 				</script>
 				<div class="mobile-slider">
-				    <div class="slider fixed-image inner"><img src="{{ asset(env('THEME'))}}/images/slider-cycle/cycle-fixed.jpg" alt="" /></div>
+				    <div class="slider fixed-image inner"><img src="{{ asset(config('settings.theme'))}}/images/slider-cycle/cycle-fixed.jpg" alt="" /></div>
 				</div>
 @endif				

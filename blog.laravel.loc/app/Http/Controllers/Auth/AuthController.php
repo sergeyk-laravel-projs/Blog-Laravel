@@ -45,7 +45,7 @@ class AuthController extends Controller
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
         
-        $this->loginView = env('THEME').'.login';
+        $this->loginView = config('settings.theme').'.login';
     }
     
     

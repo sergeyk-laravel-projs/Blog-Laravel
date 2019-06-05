@@ -7,7 +7,7 @@
 				                		@foreach($portfolios as $portfolio)
 				                			
 				                			<div class="hentry-post group">
-						                        <div class="thumb-img"><img style="width:55px" src="{{ asset(env('THEME')) }}/images/projects/{{ $portfolio->img->mini }}" alt="001" title="001" /></div>
+						                        <div class="thumb-img"><img style="width:55px" src="{{ asset(config('settings.theme')) }}/images/projects/{{ $portfolio->img->mini }}" alt="001" title="001" /></div>
 						                        <div class="text">
 						                            <a href="{{ route('portfolios.show',['alias'=>$portfolio->alias]) }}" title="{{ $portfolio->title }}" class="title">{{ $portfolio->title }}</a>
 						                            <p>{{ str_limit($portfolio->text,130) }}</p>
